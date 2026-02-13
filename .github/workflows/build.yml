@@ -37,7 +37,8 @@ jobs:
 
       - name: Create zip
         run: |
-          Compress-Archive -Path "src-tauri/target/release/TeaTimer.exe" -DestinationPath "TeaTimer-${{ github.ref_name }}-windows-x64.zip"
+          Copy-Item "src-tauri/target/release/tea-timer.exe" "TeaTimer.exe"
+          Compress-Archive -Path "TeaTimer.exe" -DestinationPath "TeaTimer-${{ github.ref_name }}-windows-x64.zip"
 
       - name: Upload Release
         uses: softprops/action-gh-release@v2
