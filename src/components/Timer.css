@@ -1,0 +1,148 @@
+.timer {
+  padding: 0 2px;
+}
+
+.timer-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.steep-controls {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.steep-btn {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 3px;
+  font-size: 0.65em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.steep-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.steep-label {
+  font-size: 0.7em;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.timer-display {
+  cursor: pointer;
+  user-select: none;
+}
+
+.time-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.time-text.finished {
+  color: #e94560;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.timer-edit {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.time-input {
+  width: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  background: transparent;
+  border: 1px solid #e94560;
+  border-radius: 3px;
+  color: inherit;
+  padding: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-input::-webkit-inner-spin-button,
+.time-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.time-separator {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.time-confirm {
+  font-size: 0.65rem;
+  margin-left: 2px;
+  padding: 0.1em 0.3em;
+}
+
+.control-btn {
+  padding: 0.1em 0.5em;
+  font-size: 0.7em;
+  border-radius: 3px;
+}
+
+.control-btn.start {
+  background-color: #0f3460;
+  border-color: #0f3460;
+  color: white;
+}
+
+.control-btn.start:hover {
+  background-color: #1a4a7a;
+}
+
+.control-btn.stop {
+  background-color: #e94560;
+  border-color: #e94560;
+  color: white;
+}
+
+.control-btn.stop:hover {
+  background-color: #d63050;
+}
+
+.control-btn.next {
+  background-color: #0f3460;
+  border-color: #0f3460;
+  color: white;
+}
+
+.control-btn.reset {
+  background-color: transparent;
+  border-color: #666;
+}
+
+.control-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: light) {
+  .control-btn.start,
+  .control-btn.next {
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+  .control-btn.start:hover {
+    background-color: #1d4ed8;
+  }
+}

@@ -1,0 +1,21 @@
+.app {
+  padding: 0;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.header-btn {
+  font-size: 0.8em;
+  padding: 0.3em 0.6em;
+}

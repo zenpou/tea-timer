@@ -1,0 +1,140 @@
+.preset-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.preset-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preset-editor-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.preset-add-btn {
+  background-color: #0f3460;
+  border-color: #0f3460;
+  color: white;
+}
+
+.preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.preset-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.preset-item.editing {
+  border: 1px solid #e94560;
+}
+
+.preset-item-name {
+  font-weight: 500;
+  min-width: 5rem;
+}
+
+.preset-default-badge {
+  font-size: 0.7em;
+  margin-left: 0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background-color: #e94560;
+  color: white;
+  vertical-align: middle;
+}
+
+.preset-item-info {
+  flex: 1;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.preset-item-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.preset-item-actions button {
+  font-size: 0.8em;
+  padding: 0.3em 0.6em;
+}
+
+.preset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.preset-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9em;
+}
+
+.preset-form input {
+  padding: 0.4em 0.6em;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: transparent;
+  color: inherit;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.preset-form-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.preset-editor-footer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid #333;
+}
+
+.save-all-btn {
+  background-color: #e94560;
+  border-color: #e94560;
+  color: white;
+}
+
+@media (prefers-color-scheme: light) {
+  .preset-item {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  .preset-form {
+    border-color: #ccc;
+  }
+  .preset-form input {
+    border-color: #ccc;
+  }
+  .preset-editor-footer {
+    border-top-color: #ddd;
+  }
+  .preset-add-btn {
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+}

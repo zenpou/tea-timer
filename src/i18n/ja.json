@@ -1,0 +1,38 @@
+{
+  "app": {
+    "title": "Tea Timer"
+  },
+  "timer": {
+    "start": "開始",
+    "stop": "停止",
+    "reset": "リセット",
+    "steep": "煎目",
+    "steepCount": "{{count}}煎目",
+    "nextSteep": "次の煎",
+    "prevSteep": "前の煎",
+    "finished": "完了"
+  },
+  "preset": {
+    "title": "プリセット",
+    "add": "追加",
+    "edit": "編集",
+    "delete": "削除",
+    "name": "名前",
+    "fixedTimes": "固定時間（秒）",
+    "increment": "加算時間（秒）",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "default": "既定",
+    "setDefault": "既定にする"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "言語",
+    "alwaysOnTop": "常に最前面に表示",
+    "notification": "通知",
+    "notificationEnabled": "通知を有効にする",
+    "sound": "音",
+    "soundEnabled": "音を有効にする",
+    "soundType": "音の種類"
+  }
+}

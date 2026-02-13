@@ -1,0 +1,38 @@
+{
+  "app": {
+    "title": "Tea Timer"
+  },
+  "timer": {
+    "start": "Start",
+    "stop": "Stop",
+    "reset": "Reset",
+    "steep": "Steep",
+    "steepCount": "Steep {{count}}",
+    "nextSteep": "Next Steep",
+    "prevSteep": "Previous Steep",
+    "finished": "Finished"
+  },
+  "preset": {
+    "title": "Presets",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "name": "Name",
+    "fixedTimes": "Fixed Times (sec)",
+    "increment": "Increment (sec)",
+    "save": "Save",
+    "cancel": "Cancel",
+    "default": "Default",
+    "setDefault": "Set default"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "alwaysOnTop": "Always on Top",
+    "notification": "Notification",
+    "notificationEnabled": "Enable notifications",
+    "sound": "Sound",
+    "soundEnabled": "Enable sound",
+    "soundType": "Sound type"
+  }
+}
