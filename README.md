@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# TeaTimer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Windows向けの軽量なお茶タイマーアプリ。画面の隅に置いて使えるコンパクトなウィンドウで、煎数ごとの抽出時間を自動管理します。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### タイマー
+- お茶の種類ごとにプリセットされた時間でカウントダウン
+- 煎数の自動進行（タイマー完了後に次の煎へ）
+- 煎数の手動切替（`<` `>` ボタン）
+- 時間表示クリックで直接編集可能
 
-## React Compiler
+### プリセット管理
+- 煎数ごとの抽出時間を柔軟に設定
+  - **固定時間**: 最初のN煎の時間を個別指定（例: 1煎目60秒、2煎目10秒）
+  - **加算時間**: 固定時間以降、煎ごとに加算される秒数
+  - 例: `fixedTimes=[60, 10], increment=10` → 1煎目: 60秒, 2煎目: 10秒, 3煎目: 20秒, 4煎目: 30秒...
+- デフォルトプリセット3種（煎茶・紅茶・烏龍茶）
+- プリセットの追加・編集・削除が可能
+- デフォルトプリセットの指定（起動時に自動選択、削除不可）
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 設定
+- 言語切替（日本語 / English）
+- 常に最前面に表示
+- 通知（Windows トースト通知）の有効/無効
+- 完了音（ビープ音）の有効/無効・種類選択
 
-## Expanding the ESLint configuration
+### UI
+- メニューバーからプリセット選択・設定画面を開く
+- 設定・プリセット編集は別ウィンドウで表示
+- 設定はJSONファイルとしてAppDataに自動保存
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## デフォルトプリセット
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| 名前 | 1煎目 | 加算時間 |
+|------|--------|----------|
+| 煎茶 | 60秒 | +10秒 |
+| 紅茶 | 180秒 | 0秒 |
+| 烏龍茶 | 60秒 | +10秒 |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## インストール
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+[Releases](https://github.com/zenpou/tea-timer/releases) から最新の `TeaTimer-vX.X.X-windows-x64.zip` をダウンロードし、解凍して `TeaTimer.exe` を実行してください。インストール不要です。
+
+## 開発
+
+### 必要環境
+- Node.js 20+
+- Rust (rustup)
+
+### セットアップ
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 開発サーバー起動
+```bash
+npm run tauri dev
 ```
+
+### ビルド
+```bash
+npm run tauri build
+```
+
+成果物: `src-tauri/target/release/TeaTimer.exe`
+
+## 技術スタック
+
+- [Tauri v2](https://tauri.app/) - 軽量デスクトップアプリフレームワーク
+- [React 19](https://react.dev/) + TypeScript
+- [Vite](https://vite.dev/) - ビルドツール
+- [react-i18next](https://react.i18next.com/) - 国際化
+
+## ライセンス
+
+MIT
