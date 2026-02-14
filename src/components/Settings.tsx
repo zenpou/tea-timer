@@ -15,15 +15,6 @@ export function Settings({ settings, onChange, onClose }: Props) {
     onChange({ ...settings, ...partial });
   };
 
-  const updateNotification = (
-    partial: Partial<AppSettings["notification"]>
-  ) => {
-    onChange({
-      ...settings,
-      notification: { ...settings.notification, ...partial },
-    });
-  };
-
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang);
     update({ language: lang });
@@ -52,45 +43,6 @@ export function Settings({ settings, onChange, onClose }: Props) {
             checked={settings.alwaysOnTop}
             onChange={(e) => update({ alwaysOnTop: e.target.checked })}
           />
-        </label>
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("settings.notification")}</h3>
-
-        <label className="settings-row">
-          <span>{t("settings.notificationEnabled")}</span>
-          <input
-            type="checkbox"
-            checked={settings.notification.enabled}
-            onChange={(e) =>
-              updateNotification({ enabled: e.target.checked })
-            }
-          />
-        </label>
-
-        <label className="settings-row">
-          <span>{t("settings.soundEnabled")}</span>
-          <input
-            type="checkbox"
-            checked={settings.notification.sound}
-            onChange={(e) => updateNotification({ sound: e.target.checked })}
-          />
-        </label>
-
-        <label className="settings-row">
-          <span>{t("settings.soundType")}</span>
-          <select
-            value={settings.notification.soundType}
-            onChange={(e) =>
-              updateNotification({ soundType: e.target.value })
-            }
-            disabled={!settings.notification.sound}
-          >
-            <option value="default">Default (Beep)</option>
-            <option value="chime">Chime</option>
-            <option value="ding">Ding</option>
-          </select>
         </label>
       </div>
 

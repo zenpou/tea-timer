@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import { emit, listen } from "@tauri-apps/api/event";
 import { Timer } from "./components/Timer";
 import { SettingsWindow } from "./components/SettingsWindow";
+import { AlertWindow } from "./components/AlertWindow";
 import { useTimer } from "./hooks/useTimer";
 import { loadSettings, saveSettings, type AppSettings } from "./store";
-import { setAlwaysOnTop, openSettingsWindow } from "./window";
+import { setAlwaysOnTop, openSettingsWindow, openAlertWindow } from "./window";
 import { buildMenu, setMenuHandler } from "./appMenu";
-import { notifyTimerFinished, playSound } from "./notify";
 import "./App.css";
 
 function getRoute(): string {
@@ -15,21 +15,14 @@ function getRoute(): string {
 }
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [settings, setSettings] = useState<AppSettings | null>(null);
   const settingsRef = useRef<AppSettings | null>(null);
   const route = getRoute();
 
   const onFinish = useCallback(() => {
-    const s = settingsRef.current;
-    if (!s) return;
-    if (s.notification.sound) {
-      playSound(s.notification.soundType);
-    }
-    if (s.notification.enabled) {
-      notifyTimerFinished(t("timer.finished"));
-    }
-  }, [t]);
+    openAlertWindow().catch(() => {});
+  }, []);
 
   const timer = useTimer(onFinish);
 
@@ -89,6 +82,11 @@ function App() {
 
   if (!settings) {
     return null;
+  }
+
+  // Alert window
+  if (route === "alert") {
+    return <AlertWindow />;
   }
 
   // Settings window

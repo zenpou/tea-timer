@@ -22,3 +22,23 @@ export async function openSettingsWindow(): Promise<void> {
     center: true,
   });
 }
+
+export async function openAlertWindow(): Promise<void> {
+  const existing = await WebviewWindow.getByLabel("alert");
+  if (existing) {
+    await existing.setFocus();
+    return;
+  }
+
+  new WebviewWindow("alert", {
+    url: "index.html#alert",
+    title: "Tea Timer",
+    width: 250,
+    height: 120,
+    resizable: false,
+    center: true,
+    alwaysOnTop: true,
+    maximizable: false,
+    minimizable: false,
+  });
+}

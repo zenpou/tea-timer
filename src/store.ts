@@ -11,11 +11,6 @@ import { defaultPresets } from "./presets";
 export interface AppSettings {
   language: string;
   alwaysOnTop: boolean;
-  notification: {
-    enabled: boolean;
-    sound: boolean;
-    soundType: string;
-  };
   presets: TeaPreset[];
   defaultPresetId: string;
 }
@@ -27,11 +22,6 @@ function getDefaultSettings(): AppSettings {
   return {
     language: "ja",
     alwaysOnTop: false,
-    notification: {
-      enabled: true,
-      sound: true,
-      soundType: "default",
-    },
     presets: [...defaultPresets],
     defaultPresetId: defaultPresets[0].id,
   };
@@ -65,12 +55,10 @@ export async function loadSettings(): Promise<AppSettings> {
       baseDir: BaseDirectory.AppData,
     });
     const parsed = JSON.parse(content) as Partial<AppSettings>;
-    // Merge with defaults to handle missing fields
     const defaults = getDefaultSettings();
     return {
       ...defaults,
       ...parsed,
-      notification: { ...defaults.notification, ...parsed.notification },
       presets: parsed.presets ?? defaults.presets,
       defaultPresetId: parsed.defaultPresetId ?? defaults.defaultPresetId,
     };

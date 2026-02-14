@@ -4,7 +4,8 @@
   "description": "enables the default permissions",
   "windows": [
     "main",
-    "settings"
+    "settings",
+    "alert"
   ],
   "permissions": [
     "core:default",
@@ -22,10 +23,6 @@
     "core:menu:default",
     "fs:default",
     "fs:allow-appdata-read-recursive",
-    "fs:allow-appdata-write-recursive",
-    "notification:default",
-    "notification:allow-notify",
-    "notification:allow-is-permission-granted",
-    "notification:allow-request-permission"
+    "fs:allow-appdata-write-recursive"
   ]
 }
