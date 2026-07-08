@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { emit } from "@tauri-apps/api/event";
 import { playAlertSound, stopAlertSound } from "../notify";
 
 export function AlertWindow() {
@@ -11,6 +12,7 @@ export function AlertWindow() {
 
     const autoClose = setTimeout(() => {
       stopAlertSound();
+      emit("timer-next-steep").catch(() => {});
       getCurrentWindow().close().catch(() => {});
     }, 10000);
 
@@ -22,6 +24,7 @@ export function AlertWindow() {
 
   const handleOk = () => {
     stopAlertSound();
+    emit("timer-next-steep").catch(() => {});
     getCurrentWindow().close().catch(() => {});
   };
 

@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "TeaTimer",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "identifier": "com.tea-timer.app",
   "build": {
     "frontendDist": "../dist",
@@ -17,7 +17,8 @@
         "height": 52,
         "resizable": false,
         "fullscreen": false,
-        "maximizable": false
+        "maximizable": false,
+        "decorations": false
       }
     ],
     "security": {

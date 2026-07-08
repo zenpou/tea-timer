@@ -16,6 +16,14 @@
 body {
   margin: 0;
   overflow: hidden;
+  border: 1px solid #2a2a4a;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    border-color: #bbb;
+  }
 }
 
 button {

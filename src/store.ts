@@ -13,6 +13,7 @@ export interface AppSettings {
   alwaysOnTop: boolean;
   presets: TeaPreset[];
   defaultPresetId: string;
+  lastPresetId?: string;
 }
 
 const SETTINGS_FILE = "settings.json";
@@ -61,6 +62,7 @@ export async function loadSettings(): Promise<AppSettings> {
       ...parsed,
       presets: parsed.presets ?? defaults.presets,
       defaultPresetId: parsed.defaultPresetId ?? defaults.defaultPresetId,
+      lastPresetId: parsed.lastPresetId,
     };
   } catch {
     return getDefaultSettings();
